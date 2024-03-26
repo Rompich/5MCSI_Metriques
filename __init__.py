@@ -36,10 +36,13 @@ def histogramme():
   
 @app.route('/extract-minutes/<date_string>')
 def extract_minutes(date_string):
-    date_object = datetime.strptime(date_string, '%Y-%m-%dT%H:%M:%SZ')
-    minutes = date_object.minute
-    return jsonify({'minutes': minutes})
-
+   try:
+        date_object = datetime.strptime(date_string, '%Y-%m-%dT%H:%M:%SZ')
+        minutes = date_object.minute
+        return minutes
+   except Exception as e:
+        print(f"Erreur lors de l'extraction des minutes : {e}")
+        return None
 
 @app.route('/commits/')
 def commits_per_minute():
