@@ -41,8 +41,8 @@ def extract_minutes(date_string):
       return jsonify({'minutes': minutes})
   
 @app.route('/commits/')
-def extract_commits():
-    response = urlopen('https://api.github.com/Rompich/5MCSI_Metriques/commits')
+def commits():
+    response = urlopen('https://api.github.com/repos/Rompich/5MCSI_Metriques/commits')
     raw_content = response.read()
     json_content = json.loads(raw_content.decode('utf-8'))
     results = []
