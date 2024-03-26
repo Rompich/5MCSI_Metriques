@@ -36,28 +36,21 @@ def histogramme():
   
 @app.route('/extract-minutes/<date_string>')
 def extract_minutes(date_string):
-   try:
-        date_object = datetime.strptime(date_string, '%Y-%m-%dT%H:%M:%SZ')
-        minutes = date_object.minute
-        return minutes
-   except Exception as e:
-        print(f"Erreur lors de l'extraction des minutes : {e}")
-        return None
-
+      date_object = datetime.strptime(date_string, '%Y-%m-%dT%H:%M:%SZ')
+      minutes = date_object.minute
+      return jsonify({'minutes': minutes})
+  
 @app.route('/commits/')
-def commits_per_minute():
-
-    response = requests.get('https://api.github.com/rompich/5MCSI_Metriques/commits')
-    commits_data = response.json()
-
-    commits_per_minute = {}
-
- 
-    for commit in commits_data:
-        date_string = commit['commit']['author']['date'] 
-        minute = extract_minutes(date_string).json['minutes'] 
-        commits_per_minute[minute] = commits_per_minute.get(minute, 0) 
-    return jsonify(commits_per_minute)
+def extract_commits():
+    response = urlopen('https://api.github.com/repos/Rompich/5MCSI_Metriques/commits')
+    raw_content = response.read()
+    json_content = json.loads(raw_content.decode('utf-8'))
+    results = []
+    for list_element in json_content.get('author', []):
+        commit_value = list_element.get('commit', {}).get('author', {}).get('email')
+        date_value = list_element.get('commit', {}).get('author', {}).get('date')
+        results.append({'Author': commit_value, 'Date':date_value})
+    return jsonify(results=results)
 
 if __name__ == "__main__":
   app.run(debug=True)
