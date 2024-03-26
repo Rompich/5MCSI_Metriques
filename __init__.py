@@ -50,10 +50,9 @@ def commits_per_minute():
 
  
     for commit in commits_data:
-        date_string = commit['commit']['author']['date'] # Obtenir la date du commit
-        minute = extract_minutes(date_string).json['minutes'] # Extraire les minutes de la date du commit
-        commits_per_minute[minute] = commits_per_minute.get(minute, 0) + 1 # Incrémenter le nombre de commits pour cette minute
-
+        date_string = commit['commit']['author']['date'] 
+        minute = extract_minutes(date_string).json['minutes'] 
+        commits_per_minute[minute] = commits_per_minute.get(minute, 0) 
     return jsonify(commits_per_minute)
 
 if __name__ == "__main__":
