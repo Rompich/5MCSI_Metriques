@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Formulaire de Contact</title>
+  <style>
+    /* Style CSS pour rendre le formulaire plus attrayant */
+    body {
+      font-family: Arial, sans-serif;
+    }
+    form {
+      max-width: 400px;
+      margin: 0 auto;
+    }
+    input[type="text"], textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+    input[type="submit"] {
+      background-color: #4CAF50;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      width: 100%;
+    }
+    input[type="submit"]:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <h2>Contactez-nous</h2>
+  <form action="/submit_contact_form" method="post">
+    <label for="nom">Nom :</label>
+    <input type="text" id="nom" name="nom" placeholder="Votre nom.." required>
+
+    <label for="prenom">Prénom :</label>
+    <input type="text" id="prenom" name="prenom" placeholder="Votre prénom.." required>
+
+    <label for="email">Email :</label>
+    <input type="text" id="email" name="email" placeholder="Votre email.." required>
+
+    <label for="message">Message :</label>
+    <textarea id="message" name="message" placeholder="Votre message.." style="height:200px" required></textarea>
+
+    <input type="submit" value="Envoyer">
+  </form>
+</body>
+</html>
