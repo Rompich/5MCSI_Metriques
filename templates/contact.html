@@ -5,23 +5,29 @@
   <title>Formulaire de Contact</title>
   <style>
     /* Style CSS pour rendre le formulaire plus attrayant */
-  body {
+ body {
       font-family: Arial, sans-serif;
       background-image: url('https://fond-ecran-anime.fr/wp-content/uploads/2022/02/Dragon-Ball-Gt-Goku-Dragon-Dragon-Ball-Image-Wallpaper-Do-Goku-Dragonball-Wallpaper-Hd-Wallpaper-Poster-Superman-Foto-Do-Goku-Fanart-576x1024.jpg');
       background-size: cover;
-      background-position: center;
+      background-position: top left;
       background-repeat: no-repeat;
-      height: 100vh;
+      height: 100vh; /* Pour que l'image couvre toute la fenêtre */
       margin: 0;
       padding: 0;
       display: flex;
-      justify-content: center;
-      align-items: center;
+      justify-content: flex-start;
+      align-items: flex-start;
     }
     form {
-      max-width: 400px;
-      max-width: 400px;
-      margin: 0 auto;
+      width: 300px;
+      padding: 20px;
+      background-color: rgba(255, 255, 255, 0.8); /* Arrière-plan semi-transparent */
+      border-radius: 8px;
+      margin-top: 50px;
+      margin-left: 50px;
+    }
+    label {
+      color: white; /* Couleur du texte en blanc */
     }
     input[type="text"], textarea {
       width: 100%;
