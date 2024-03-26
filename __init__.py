@@ -39,17 +39,16 @@ def extract_minutes(date_string):
     minutes = date_object.minute
     return jsonify({'minutes': minutes})
 
-# Route pour extraire les commits par minute
+
 @app.route('/commits/')
 def commits_per_minute():
-    # Utiliser l'API de GitHub pour obtenir les données sur les commits
+
     response = requests.get('https://api.github.com/rompich/5MCSI_Metriques/commits')
     commits_data = response.json()
 
-    # Initialiser un dictionnaire pour stocker le nombre de commits par minute
     commits_per_minute = {}
 
-    # Parcourir les données des commits
+ 
     for commit in commits_data:
         date_string = commit['commit']['author']['date'] # Obtenir la date du commit
         minute = extract_minutes(date_string).json['minutes'] # Extraire les minutes de la date du commit
